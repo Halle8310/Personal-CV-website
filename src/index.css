@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/* Custom theme configuration using CSS variables */
+@theme {
+  --font-sans: Inter, system-ui, -apple-system, sans-serif;
+  --font-display: Poppins, system-ui, sans-serif;
+  
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+  --animate-slide-down: slideDown 0.3s ease-out;
+  --animate-bounce-slow: bounce 2s infinite;
+  
+  @keyframes fadeIn {
+    0%: { opacity: 0; }
+    100%: { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    0%: { transform: translateY(20px); opacity: 0; }
+    100%: { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes slideDown {
+    0%: { transform: translateY(-20px); opacity: 0; }
+    100%: { transform: translateY(0); opacity: 1; }
+  }
+}
+
+/* Dark mode support (v4 uses light/dark classes) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Custom utilities */
+@utility container-custom {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  
+  @media (width >= 40rem) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  @media (width >= 64rem) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@utility section-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  background-image: linear-gradient(to right, var(--color-primary-600), var(--color-purple-600));
+  background-clip: text;
+  color: transparent;
+  
+  @media (width >= 48rem) {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #f9fafb;
+    color: #111827;
+    transition-property: color, background-color;
+    transition-duration: 300ms;
+  }
+  
+  .dark body {
+    background-color: #111827;
+    color: #f3f4f6;
+  }
+}
+
+/* Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
